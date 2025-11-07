@@ -77,6 +77,16 @@ body {
   align-items: left;
 }
 
+#current-weapon-details a {
+  color: yellow;
+  text-decoration: none;
+}
+
+#current-weapon-details a:hover {
+  color: orange;
+  text-decoration: none;
+}
+
 #current-weapon-image {
   width: 200px;
   margin: 15px 0;
