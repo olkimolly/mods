@@ -12,7 +12,7 @@ var hoveredWeaponRange = document.getElementById("range");
 selectorModal.classList.add("active"); 
 appInfo.classList.add("active"); 
 currentWeapon.style.filter = "blur(5px)";
-appInfo.style.filter = "blur(5px)";
+//appInfo.style.filter = "blur(5px)";
 
 selectorButton.addEventListener("click", function() {
   if(selectorModal.style.display === "block") {
