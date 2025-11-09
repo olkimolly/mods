@@ -15,48 +15,49 @@ currentWeapon.style.filter = "blur(5px)";
 //appInfo.style.filter = "blur(5px)";
 
 selectorButton.addEventListener("click", function() {
-  if(selectorModal.style.display === "block") {
-    selectorModal.classList.remove("active"); 
-    currentWeapon.style.filter = "none";
-	appInfo.classList.remove("active"); 
-  } else {
-    selectorModal.classList.add("active"); 
-    currentWeapon.style.filter = "blur(5px)";
-	appInfo.classList.add("active");
-  }
+	if(selectorModal.style.display === "block") {
+    	selectorModal.classList.remove("active"); 
+    	currentWeapon.style.filter = "none";
+		appInfo.classList.remove("active"); 
+  	} else {
+    	selectorModal.classList.add("active"); 
+    	currentWeapon.style.filter = "blur(5px)";
+		appInfo.classList.add("active");
+  	}
 });
 
 function mouseoverWeapon(element){
-  hoveredWeaponName.textContent = element.dataset.weapon;
-  hoveredWeaponDamage.style.width = element.dataset.damage;
-  hoveredWeaponFireRate.style.width = element.dataset.fireRate;
-  hoveredWeaponAccuracy.style.width = element.dataset.accuracy;
-  hoveredWeaponRange.style.width = element.dataset.range;
+  	hoveredWeaponName.textContent = element.dataset.weapon;
+  	hoveredWeaponDamage.style.width = element.dataset.damage;
+  	hoveredWeaponFireRate.style.width = element.dataset.fireRate;
+  	hoveredWeaponAccuracy.style.width = element.dataset.accuracy;
+  	hoveredWeaponRange.style.width = element.dataset.range;
 }
 
 function onmouseoutWeapon(){
-  hoveredWeaponName.textContent = "Select Weapon";
-  hoveredWeaponDamage.style.width = "0%";
-  hoveredWeaponFireRate.style.width = "0%";
-  hoveredWeaponAccuracy.style.width = "0%";
-  hoveredWeaponRange.style.width = "0%";
+  	hoveredWeaponName.textContent = "Select Weapon";
+  	hoveredWeaponDamage.style.width = "0%";
+  	hoveredWeaponFireRate.style.width = "0%";
+  	hoveredWeaponAccuracy.style.width = "0%";
+  	hoveredWeaponRange.style.width = "0%";
 }
 
 function changeCurrentWeaponWith(element) {
-  var currentWeaponName = document.getElementById('current-weapon-name');
-  var currentWeaponDetails = document.getElementById('current-weapon-details');
-  var currentWeaponImage = document.getElementById('current-weapon-image');
+  	var currentWeaponName = document.getElementById('current-weapon-name');
+  	var currentWeaponDetails = document.getElementById('current-weapon-details');
+  	var currentWeaponImage = document.getElementById('current-weapon-image');
   
-  var activeWeapon = document.getElementsByClassName('active-weapon')[0];
+  	var activeWeapon = document.getElementsByClassName('active-weapon')[0];
   
-  activeWeapon.classList.remove('active-weapon');
+  	activeWeapon.classList.remove('active-weapon');
   
-  currentWeaponName.innerHTML = element.dataset.weapon;
-  currentWeaponDetails.innerHTML = element.dataset.details;
+  	currentWeaponName.innerHTML = element.dataset.weapon;
+  	//currentWeaponDetails.innerHTML = element.dataset.details;
+	currentWeaponDetails.innerHTML = document.getElementById(element.dataset.details).innerHTML;
   
-  element.classList.add("active-weapon");
+  	element.classList.add("active-weapon");
   
-  selectorModal.classList.remove("active"); 
-  currentWeapon.style.filter = "none";
-  appInfo.classList.remove("active");
+  	selectorModal.classList.remove("active"); 
+  	currentWeapon.style.filter = "none";
+  	appInfo.classList.remove("active");
 }
