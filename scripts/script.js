@@ -60,4 +60,5 @@ function changeCurrentWeaponWith(element) {
   	selectorModal.classList.remove("active"); 
   	currentWeapon.style.filter = "none";
   	appInfo.classList.remove("active");
+	currentWeapon.scrollTop = 0;
 }
