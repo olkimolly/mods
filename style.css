@@ -49,8 +49,37 @@ body {
   background: rgba(0, 0, 0, 0.6);
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
   flex-direction: column;
-  justify-content: center;
+  /*justify-content: center;*/
   align-items: center;
+  max-width: 800px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  /* Untuk Firefox - scrollbar tipis */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 128, 0, 0.5) transparent;
+}
+
+/* Untuk Webkit browsers (Chrome, Safari, Edge) */
+#current-weapon::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+#current-weapon::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 10px;
+}
+
+#current-weapon::-webkit-scrollbar-thumb {
+  background: rgba(255, 128, 0, 0.3);
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+#current-weapon::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 128, 0, 0.7);
 }
 
 #current-weapon h3 {
@@ -63,6 +92,8 @@ body {
   text-align: center;
   letter-spacing: 0px;
   padding: 1em 0em;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 #current-weapon-name {
@@ -70,13 +101,23 @@ body {
   font-weight: bold;
 }
 
+.content-storage {
+  /*display: none;*/
+}
+
 .patch-version {
   color: yellow;
+  font-weight: bold;
 }
 
 .mod-name {
   color: #ff8000;
   font-weight: bold;
+}
+
+#center {
+  justify-content: center;
+  align-items: center;
 }
 
 #current-weapon-details {
@@ -85,11 +126,16 @@ body {
   justify-content: left;
   align-items: left;
   text-align: justify;
+  width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  box-sizing: border-box;
 }
 
 #current-weapon-details a {
   color: yellow;
   text-decoration: none;
+  word-break: break-all;
 }
 
 #current-weapon-details a:hover {
