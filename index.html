@@ -49,37 +49,31 @@
 	  
 	  	<div id="patch-logs-content">
 			<span class="mod-name">Hiking Mod</span><br>
-			<span class="patch-version">v2.0.5.0 (11 November 2025)</span><br>
-			• upgrade mod security to version 7<br>
-			• add distance text and edit some settings variables<br>
+			<span class="patch-version">v2.0.6.1 (8 December 2025)</span><br>
+			• fix bug teleport to finish<br>
 			<span class="patch-version">v2.0.6.0 (25 November 2025)</span><br>
 			• upgrade sound player module from SystemWindowsMedia to NAudio<br>
 			• change port use from 6721 to 6723<br>
 			• add new webhook : teleport_to_finish<br>
-			<span class="patch-version">v2.0.6.1 (8 December 2025)</span><br>
-			• fix bug teleport to finish<br>
+			<span class="patch-version">v2.0.5.0 (11 November 2025)</span><br>
+			• upgrade mod security to version 7<br>
+			• add distance text and edit some settings variables<br>
 			<br>
 			<span class="mod-name">Last Standing Mod</span><br>
-			<span class="patch-version">v1.0.0.1 (3 December 2025)</span><br>
-			• npc name font style can be customize by user<br>
-			• fix active webhook from 10 to 20<br>
-			• remove un-used variable on npc settings<br>
-			• remove camera notification spam<br>
-			• add logic to teleport npc back to arena<br>
-			• user now can set max npc limit<br>
-			• add npc queue spawn to reduce crash chance<br>
-			• add keystroke to spawn npc 1 to re-trigger npc animation<br>
-			• add keystroke to hide / show npc name<br>
-			<span class="patch-version">v1.0.0.2 (5 December 2025)</span><br>
-			• user can now set custom arena coordinate<br>
-			• add camera preset from 3 to 5<br>
-			• user can now set camera transition speed<br>
-			• add function to autoplay camera preset<br>
-			• random autoplay camera preset triggered every 7-25 seconds<br>
-			• change code for npc attacking enemy, so now npc can use all weapons<br>
-			<span class="patch-version">v1.0.0.3 (6 December 2025)</span><br>
-			• revert code for npc to attack enemy to old version because causing npc start fleeing endlessly<br>
-			• player teleport Y coordinate +10 from arena coordinate so no more bullet blocking<br>
+			<span class="patch-version">v2.0.0.6 (20 January 2026)</span><br>
+			• remove function to show npc debug<br>
+			• reduce dead npc remove time from 5 seconds to 0.01 seconds<br>
+			<span class="patch-version">v2.0.0.5 (19 January 2026)</span><br>
+			• add safer method to remove dead npc from game<br>
+			• add 5 seconds delay to remove dead npc<br>
+			<span class="patch-version">v2.0.0.4 (19 January 2026)</span><br>
+			• added a function to show npc debug (default key substract)<br>
+			• npc1 can now spawned manually and use different name<br>
+			<span class="patch-version">v2.0.0.3 (19 January 2026)</span><br>
+			• edit code to make player hiden deeper beneath the ground<br>
+			• removed all FightAgainstHatedTargets and let npc fight target on npclist<br>
+			<span class="patch-version">v2.0.0.2 (18 January 2026)</span><br>
+			• add code to make player hiden beneath the ground to prevent bug npc keep attacking player if theres more than 3 npc with different username<br>
 			<span class="patch-version">v2.0.0.1 (18 January 2026)</span><br>
 			• changed NPC spawn logic<br>
 			• changed NPC combat logic<br>
@@ -90,21 +84,30 @@
 			• arena camera activation button will automatically teleport players to the arena<br>
 			• added a survived time to monitor how long a specific username has survived<br>
 			• added a function to display a battle bar visualization if the NPC conditions are met<br>
-			• added a /explode webhook to delete all NPCs with a larger explosion effect.<br>The webhook for explode all from the previous version still exists and can be used<br>
-			• added a configuration for the camera info text, so its position can be changed or removed<br>to avoid blocking other mods like menyoo<br>
+			• added a /explode webhook to delete all NPCs with a larger explosion effect. The webhook for explode all from the previous version still exists and can be used<br>
+			• added a configuration for the camera info text, so its position can be changed or removed to avoid blocking other mods like menyoo<br>
 			• added code for NoBlood so new users don't need to install other mods to remove blood effects in the game<br>
-			• added a spawn_npc webhook link to spawn NPCs with specific arguments.<br>However, spawning NPCs using this method does not produce a sound effect.<br>
-			<span class="patch-version">v2.0.0.2 (18 January 2026)</span><br>
-			• add code to make player hiden beneath the ground to prevent bug npc keep attacking player if theres more than 3 npc with different username<br>
-			<span class="patch-version">v2.0.0.3 (19 January 2026)</span><br>
-			• edit code to make player hiden deeper beneath the ground<br>
-			• removed all FightAgainstHatedTargets and let npc fight target on npclist<br>
-			<span class="patch-version">v2.0.0.4 (19 January 2026)</span><br>
-			• added a function to show npc debug (default key substract)<br>
-			• npc1 can now spawned manually and use different name<br>
-			<span class="patch-version">v2.0.0.5 (19 January 2026)</span><br>
-			• add safer method to remove dead npc from game<br>
-			• add 5 seconds delay to remove dead npc<br>
+			• added a spawn_npc webhook link to spawn NPCs with specific arguments. However, spawning NPCs using this method does not produce a sound effect.<br>
+			<span class="patch-version">v1.0.0.3 (6 December 2025)</span><br>
+			• revert code for npc to attack enemy to old version because causing npc start fleeing endlessly<br>
+			• player teleport Y coordinate +10 from arena coordinate so no more bullet blocking<br>
+			<span class="patch-version">v1.0.0.2 (5 December 2025)</span><br>
+			• user can now set custom arena coordinate<br>
+			• add camera preset from 3 to 5<br>
+			• user can now set camera transition speed<br>
+			• add function to autoplay camera preset<br>
+			• random autoplay camera preset triggered every 7-25 seconds<br>
+			• change code for npc attacking enemy, so now npc can use all weapons<br>
+			<span class="patch-version">v1.0.0.1 (3 December 2025)</span><br>
+			• npc name font style can be customize by user<br>
+			• fix active webhook from 10 to 20<br>
+			• remove un-used variable on npc settings<br>
+			• remove camera notification spam<br>
+			• add logic to teleport npc back to arena<br>
+			• user now can set max npc limit<br>
+			• add npc queue spawn to reduce crash chance<br>
+			• add keystroke to spawn npc 1 to re-trigger npc animation<br>
+			• add keystroke to hide / show npc name<br>
 			<br>
 			<span class="mod-name">Train Mod</span><br>
 			<span class="patch-version">v1.0.0.0 (5 January 2026)</span><br>
