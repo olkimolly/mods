@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Olki NPC Settings Converter (1.29.6.0 -> 2.8.0.1)</title>
+<style>
+body {
+  background:#0e0e0e;
+  color:#eaeaea;
+  font-family: Consolas, monospace;
+  padding:20px;
+}
+button {
+  padding:10px 20px;
+  cursor:pointer;
+}
+pre {
+  background:#1c1c1c;
+  padding:10px;
+  max-height:320px;
+  overflow:auto;
+}
+</style>
+</head>
+<body>
+
+<h2>Olki NPC Settings Converter (1.29.6.0 -> 2.8.0.1)</h2>
+
+<input type="file" id="file" accept=".ini">
+<br><br>
+<button onclick="convert()">Convert</button>
+
+<h3>Preview</h3>
+<pre id="log"></pre>
+
+<script>
+const TEMPLATE = {
+  group1: [
+    'WebhookName','DefaultName','Model1','Health','Weapon','WeaponNoReload',
+    'Accuracy','OnlyDamagedByPlayer','FireProof','ExplosionProof',
+    'UseBlip','BlipColorId','BlipScale'
+  ],
+  group2: [
+    'WebhookName','DefaultName',
+    'ModelDriver','ModelPassenger','ModelRightRear','ModelLeftRear',
+    'Health','Weapon','WeaponNoReload','Accuracy',
+    'OnlyDamagedByPlayer','FireProof','ExplosionProof',
+    'VehicleModel','VehicleOnlyDamagedByPlayer',
+    'UseBlip','BlipColorId','BlipScale'
+  ],
+  group3: [
+    'WebhookName','DefaultName','Model1','Health','Weapon','WeaponNoReload',
+    'Accuracy','OnlyDamagedByPlayer','FireProof','ExplosionProof',
+    'UseBlip','BlipColorId','BlipScale'
+  ]
+};
+
+function parseIni(text) {
+  const data = {};
+  let section = null;
+
+  text.split(/\r?\n/).forEach(line => {
+    line = line.trim();
+    if (!line || line.startsWith(';')) return;
+
+    if (line.startsWith('[')) {
+      section = line;
+      data[section] = {};
+    } else {
+      const [k, ...v] = line.split('=');
+      const key = k.trim();
+      const val = v.join('=').trim();
+
+      if (!data[section][key]) data[section][key] = [];
+      data[section][key].push(val);
+    }
+  });
+  return data;
+}
+
+function normalize(oldNpc, oldIdx, newIdx, group, useTemplateOnly=false) {
+  const out = {};
+  TEMPLATE[group].forEach(key => {
+    const newKey = `Npc${newIdx}${key}`;
+    const oldKey = `Npc${oldIdx}${key}`;
+
+    if (!useTemplateOnly && oldNpc && oldNpc[oldKey]) {
+      out[newKey] = oldNpc[oldKey];
+    } else {
+      if (key === 'UseBlip') out[newKey] = ['false'];
+      else if (key === 'BlipColorId') out[newKey] = ['75'];
+      else if (key === 'BlipScale') out[newKey] = ['0.7'];
+      else out[newKey] = [''];
+    }
+  });
+  return out;
+}
+
+function buildIni(sections) {
+  let out = '';
+  for (const sec in sections) {
+    out += sec + '\n';
+    for (const k in sections[sec]) {
+      sections[sec][k].forEach(v => out += `${k}=${v}\n`);
+    }
+    out += '\n';
+  }
+  return out;
+}
+
+function download(name, text) {
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([text]));
+  a.download = name;
+  a.click();
+}
+
+function convert() {
+  const file = document.getElementById('file').files[0];
+  if (!file) return alert('Upload file INI lama dulu');
+
+  const reader = new FileReader();
+  reader.onload = e => {
+    const src = parseIni(e.target.result);
+    const g1 = {}, g2 = {}, g3 = {};
+
+    //GROUP 1
+    for (let i = 1; i <= 10; i++) {
+      if (i <= 5)
+        g1[`[NPC${i}]`] = normalize(src[`[NPC${i}]`], i, i, 'group1');
+      else
+        g1[`[NPC${i}]`] = normalize(null, 0, i, 'group1', true);
+    }
+
+    //GROUP 2
+    for (let i = 1; i <= 10; i++) {
+      if (i <= 5)
+        g2[`[NPC${i}]`] = normalize(src[`[NPC${i+5}]`], i+5, i, 'group2');
+      else
+        g2[`[NPC${i}]`] = normalize(null, 0, i, 'group2', true);
+    }
+
+    //GROUP 3
+    for (let i = 1; i <= 10; i++) {
+      g3[`[NPC${i}]`] = normalize(src[`[NPC${i+10}]`], i+10, i, 'group3');
+    }
+
+    const out1 = buildIni(g1);
+    const out2 = buildIni(g2);
+    const out3 = buildIni(g3);
+
+    document.getElementById('log').textContent =
+      '=== GROUP 1 ===\n' + out1 +
+      '\n=== GROUP 2 ===\n' + out2 +
+      '\n=== GROUP 3 ===\n' + out3;
+
+    download('olki_npc_settings_group_1.ini', out1);
+    download('olki_npc_settings_group_2.ini', out2);
+    download('olki_npc_settings_group_3.ini', out3);
+  };
+  reader.readAsText(file);
+}
+</script>
+
+</body>
+</html>
