@@ -10,7 +10,7 @@ body {
   padding: 0;
   width: 100%;
   height: 100%;
-  background: url("images/background.jpg") no-repeat center center;
+  background: url("images/background1.webp") no-repeat center center;
   background-size: cover;
   color: white;
   font-family: 'Poppins', sans-serif;
@@ -18,10 +18,12 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  /* untuk transisi */
   transition: background-image 3s ease-in-out;
   /*background-attachment: fixed;*/
 }
 
+/* Class khusus untuk transisi */
 body.changing-bg {
   transition: background-image 3s ease-in-out;
 }
