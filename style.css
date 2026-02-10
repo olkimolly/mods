@@ -19,7 +19,11 @@ body {
   justify-content: center;
   align-items: center;
   transition: background-image 3s ease-in-out;
-  background-attachment: fixed;
+  /*background-attachment: fixed;*/
+}
+
+body.changing-bg {
+  transition: background-image 3s ease-in-out;
 }
 
 @media all and (max-width: 768px) {
