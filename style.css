@@ -18,6 +18,8 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  transition: background-image 3s ease-in-out;
+  background-attachment: fixed;
 }
 
 @media all and (max-width: 768px) {
