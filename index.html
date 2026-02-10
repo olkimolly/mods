@@ -6,7 +6,35 @@
 	<title>Olkimolly GTA V Mods</title>
     <link rel="stylesheet" href="style.css">
 </head>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const totalBackgrounds = 15;
+    let currentBg = 1;
+    const body = document.body;
     
+    const images = [];
+    for (let i = 1; i <= totalBackgrounds; i++) {
+      const img = new Image();
+      img.src = `images/background${i}.jpg`;
+      images.push(img);
+    }
+    
+    function changeBackground() {
+      currentBg = (currentBg % totalBackgrounds) + 1;
+      
+      body.style.transition = 'background-image 3s ease-in-out';
+      body.style.backgroundImage = `url('images/background${currentBg}.webp')`;
+      
+      setTimeout(() => {
+        body.style.transition = '';
+      }, 1000);
+    }
+    
+    body.style.backgroundImage = `url('images/background1.webp')`;
+    
+    setInterval(changeBackground, 10000);
+  });
+</script>  
 <body>
 	<div id="app-info">
   		<img src="images/grand-theft-auto-v-logo.png" height="300"/>
