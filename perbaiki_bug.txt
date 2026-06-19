@@ -1,0 +1,2 @@
+Last Standing Mod
+- Saat data skor leaderboard terlalu banyak, bisa menyebabkan fps game drop. Bug ditemukan oleh tamboothgame saat data skor bulanan terdapat 12.000+ baris, dan data skor harian 8.000+ baris
